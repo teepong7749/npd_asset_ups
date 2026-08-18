@@ -736,7 +736,6 @@ async function submitRepair() {
   var reporter = document.getElementById('inp-reporter').value.trim();
   var phone    = document.getElementById('inp-phone').value.trim();
   var detail   = document.getElementById('inp-detail').value.trim();
-async function submitRepair() { // <-- ประกาศซ้ำตรงนี้ ทำให้ Scope ตัวแปรด้านบนพังทั้งหมด
   if (!currentAsset) {
     alert('ไม่พบข้อมูลครุภัณฑ์');
     return;
