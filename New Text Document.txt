@@ -1,0 +1,239 @@
+import qrcode
+import pandas as pd
+from PIL import Image, ImageFont, ImageDraw, ImageOps
+import requests
+import os
+
+# --- ตั้งค่าข้อมูล ---
+SHEET_ID = '1I0bKr_IZd6YKvaEtkunKDaZabW3k9MyPeCnOWAuizPA'
+GID = '0' 
+BASE_WEB_URL = "https://npd-asset-p.vercel.app/?id=" # ในนี้มี = ตัวที่ 1 แล้ว
+LOGO_FILE = 'logo.png'
+FONT_FILE = 'THSarabun Bold.ttf'
+OUTPUT_DIR = 'qrprinter_results'
+
+SHEET_URL = f'https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={GID}'
+
+if not os.path.exists(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
+
+def create_qr_with_style(asset_id, index):
+    clean_id = str(asset_id).lstrip('=')
+    
+    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=20, border=3)
+    qr.add_data(f"{BASE_WEB_URL}{clean_id}")
+    qr.make(fit=True)
+    
+    qr_img = qr.make_image(fill_color="black", back_color="white").convert("RGBA")
+    qr_w, qr_h = qr_img.size
+
+    # --- ใส่โลโก้ตรงกลาง ---
+    try:
+        logo = Image.open(LOGO_FILE).convert("RGBA")
+        logo_size = 200
+        logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
+        white_bg = Image.new("RGBA", (logo_size + 20, logo_size + 20), (255, 255, 255, 255))
+        qr_img.paste(white_bg, ((qr_w - logo_size - 20) // 2, (qr_h - logo_size - 20) // 2))
+        qr_img.paste(logo, ((qr_w - logo_size) // 2, (qr_h - logo_size) // 2), logo)
+    except:
+        pass
+
+    def create_qr_with_style(asset_id, index):
+        clean_id = str(asset_id).lstrip('=')
+    
+    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=20, border=3)
+    qr.add_data(f"{BASE_WEB_URL}{clean_id}")
+    qr.make(fit=True)
+    
+    qr_img = qr.make_image(fill_color="black", back_color="white").convert("RGBA")
+    qr_w, qr_h = qr_img.size
+
+    # --- ใส่โลโก้ตรงกลาง ---
+    try:
+        logo = Image.open(LOGO_FILE).convert("RGBA")
+        logo_size = 200
+        logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
+        white_bg = Image.new("RGBA", (logo_size + 20, logo_size + 20), (255, 255, 255, 255))
+        qr_img.paste(white_bg, ((qr_w - logo_size - 20) // 2, (qr_h - logo_size - 20) // 2))
+        qr_img.paste(logo, ((qr_w - logo_size) // 2, (qr_h - logo_size) // 2), logo)
+    except:
+        pass
+
+    def create_qr_with_style(asset_id, index):
+    # ทุกบรรทัดด้านล่างนี้ ต้องมีช่องว่างข้างหน้า 4 ช่อง (หรือ 1 Tab) เท่ากันเป๊ะครับ
+        clean_id = str(asset_id).lstrip('=')
+    
+    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=20, border=3)
+    qr.add_data(f"{BASE_WEB_URL}{clean_id}")
+    qr.make(fit=True)
+    
+    qr_img = qr.make_image(fill_color="black", back_color="white").convert("RGBA")
+    qr_w, qr_h = qr_img.size
+
+    # --- ใส่โลโก้ตรงกลาง ---
+    try:
+        logo = Image.open(LOGO_FILE).convert("RGBA")
+        logo_size = 200
+        logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
+        white_bg = Image.new("RGBA", (logo_size + 20, logo_size + 20), (255, 255, 255, 255))
+        qr_img.paste(white_bg, ((qr_w - logo_size - 20) // 2, (qr_h - logo_size - 20) // 2))
+        qr_img.paste(logo, ((qr_w - logo_size) // 2, (qr_h - logo_size) // 2), logo)
+    except:
+        pass
+
+    def create_qr_with_style(asset_id, index):
+        clean_id = str(asset_id).lstrip('=')
+    
+    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=20, border=3)
+    qr.add_data(f"{BASE_WEB_URL}{clean_id}")
+    qr.make(fit=True)
+    
+    qr_img = qr.make_image(fill_color="black", back_color="white").convert("RGBA")
+    qr_w, qr_h = qr_img.size
+
+    # --- ใส่โลโก้ตรงกลาง ---
+    try:
+        logo = Image.open(LOGO_FILE).convert("RGBA")
+        logo_size = 200
+        logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
+        white_bg = Image.new("RGBA", (logo_size + 20, logo_size + 20), (255, 255, 255, 255))
+        qr_img.paste(white_bg, ((qr_w - logo_size - 20) // 2, (qr_h - logo_size - 20) // 2))
+        qr_img.paste(logo, ((qr_w - logo_size) // 2, (qr_h - logo_size) // 2), logo)
+    except:
+        pass
+
+    # --- ตั้งค่าข้อความ ---
+    line1 = "ข้อมูลครุภัณฑ์ กพ.ทร."
+    line2 = "แจ้งหมึกพิมพ์หมด" 
+    
+    try:
+        font_top = ImageFont.truetype(FONT_FILE, 100)
+        font_id = ImageFont.truetype(FONT_FILE, 50)
+        font_sub = ImageFont.truetype(FONT_FILE, 80)
+    except:
+        font_top = font_id = font_sub = ImageFont.load_default()
+
+    draw_temp = ImageDraw.Draw(Image.new("RGB", (1, 1)))
+    t1_w = draw_temp.textbbox((0, 0), line1, font=font_top)[2]
+    id_w = draw_temp.textbbox((0, 0), clean_id, font=font_id)[2]
+    t2_w = draw_temp.textbbox((0, 0), line2, font=font_sub)[2]
+
+    # --- คำนวณขนาดภาพ ---
+    header_space = 200
+    footer_space = 20
+    total_w = qr_w + 100
+    total_h = qr_h + header_space + footer_space + 100
+
+    final = Image.new("RGB", (total_w, total_h), (255, 255, 255))
+    draw = ImageDraw.Draw(final)
+
+    # --- วาง QR Code ---
+    qr_y_pos = header_space - 5
+    final.paste(qr_img.convert("RGB"), ((total_w - qr_w) // 2, qr_y_pos))
+    
+    # --- เขียนข้อความ ---
+    draw.text(((total_w - t1_w) // 2, 70), line1, fill="black", font=font_top)
+    draw.text(((total_w - id_w) // 2, 180), clean_id, fill="black", font=font_id)
+    draw.text(((total_w - t2_w) // 2, qr_y_pos + qr_h - 30), line2, fill="black", font=font_sub)
+
+    # --- วาดเส้นขอบ 2 ชั้น ---
+    draw.rectangle([10, 10, total_w - 10, total_h - 10], outline="black", width=20)
+    draw.rectangle([45, 45, total_w - 45, total_h - 45], outline="black", width=8)
+
+    # --- บันทึกไฟล์ ---
+    safe_name = clean_id.replace("/", "-")
+    filename = os.path.join(OUTPUT_DIR, f"QR_{safe_name}.png")
+    final.save(filename)
+    print(f"✅ [{index}] สร้างสำเร็จ: {clean_id}")
+
+# --- รันโปรแกรม ---
+# --- รันโปรแกรม ---
+try:
+    print("⏳ กำลังดึงข้อมูลจาก Google Sheets...")
+    df = pd.read_csv(SHEET_URL)
+    
+    # --- เริ่มกระบวนการล้างข้อมูลขั้นเด็ดขาด ---
+    # ดึงคอลัมน์ C (Index 2) แปลงเป็น String ก่อน
+    raw_ids = df.iloc[:, 2].astype(str).tolist()
+    
+    clean_ids = []
+    for aid in raw_ids:
+        # 1. ตัดช่องว่างหัวท้าย
+        val = aid.strip()
+        # 2. ลบเครื่องหมาย = ออก
+        val = val.replace('=', '')
+        # 3. ลบเครื่องหมาย " ออก (ถ้ามี)
+        val = val.replace('"', '')
+        
+        # 4. ถ้าไม่ใช่ค่าว่าง และไม่ใช่หัวตาราง ให้เก็บไว้
+        if val and val.lower() != 'nan' and val != 'หมายเลขครุภัณฑ์':
+            clean_ids.append(val)
+
+    # ตัดรายการที่ซ้ำกันออก
+    asset_ids = list(dict.fromkeys(clean_ids))
+    # ----------------------------------------
+
+    print(f"📦 พบหมายเลขครุภัณฑ์ {len(asset_ids)} รายการ เริ่มสร้าง QR...")
+    # ═══ ตั้งค่าช่วงที่ต้องการ ═══
+    # สร้างทั้งหมด → START = 1, END = 99999
+    # สร้างเฉพาะลำดับที่ 300-350 → START = 300, END = 350
+    START = 200
+    END = 249
+
+    for i, aid in enumerate(asset_ids, 1):
+        if i < START:
+            continue
+        if i > END:
+            break
+        create_qr_with_style(aid, i)
+
+    print(f"\n✨ เสร็จเรียบร้อย!")
+except Exception as e:
+    print(f"❌ เกิดข้อผิดพลาด: {e}")
+
+
+
+
+
+
+import csv
+import json
+import urllib.request
+import io
+
+SHEET_ID = "1I0bKr_IZd6YKvaEtkunKDaZabW3k9MyPeCnOWAuizPA"
+TAB_GID = "0"
+
+print("📡 กำลังดึงข้อมูล...")
+url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={TAB_GID}"
+response = urllib.request.urlopen(url)
+data = response.read().decode("utf-8-sig")
+
+reader = csv.reader(io.StringIO(data))
+header = next(reader)
+
+assets = {}
+for row in reader:
+    if len(row) < 3:
+        continue
+    asset_id = row[2].strip().replace('=','').replace('"','')
+    if not asset_id or asset_id == 'nan':
+        continue
+    assets[asset_id] = {
+        "asset_id": asset_id,
+        "property_no": row[3] if len(row) > 3 else "",
+        "brand": row[4] if len(row) > 4 else "",
+        "model": row[5] if len(row) > 5 else "",
+        "sn_cpu": row[8] if len(row) > 8 else "",  # S/N ตัวเครื่อง
+        "user_name": row[14] if len(row) > 14 else "",
+        "location": row[13] if len(row) > 13 else "",
+        "status": row[15] if len(row) > 15 else "",
+        "repair_1": row[17] if len(row) > 17 else "",
+        "repair_2": row[18] if len(row) > 18 else "",
+        "repair_3": row[19] if len(row) > 19 else ""
+    }
+
+with open("data.json", "w", encoding="utf-8") as f:
+    json.dump(assets, f, ensure_ascii=False, indent=2)
+
+print(f"✅ สร้าง data.json เสร็จ! ({len(assets)} รายการ)")
