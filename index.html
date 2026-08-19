@@ -432,18 +432,14 @@ textarea.field-input{min-height:65px; resize:vertical}
     </div>
 
     <div class="row">
-      <div class="row-label">S/N CPU :</div>
-      <div class="row-val mono" id="f-sn_cpu">-</div>
+      <div class="row-label">S/N :</div>
+      <div class="row-val mono" id="f-sn">-</div>
     </div>
 
+    <!-- อายุการใช้งาน / วันที่รับ (ตามตาราง Sheet) -->
     <div class="row">
-      <div class="row-label">S/N Monitor :</div>
-      <div class="row-val mono" id="f-sn_monitor">-</div>
-    </div>
-
-    <div class="row">
-      <div class="row-label">หน่วยความจำ :</div>
-      <div class="row-val">ROM : <span id="f-hdd">-</span> | RAM : <span id="f-ram">-</span></div>
+      <div class="row-label">อายุการใช้งาน :</div>
+      <div class="row-val"><span id="f-age">-</span> ปี <span style="color:#6b7280;font-weight:400;font-size:13px">(วันที่รับ: <span id="f-receive_date">-</span>)</span></div>
     </div>
 
     <div class="row">
@@ -531,7 +527,7 @@ textarea.field-input{min-height:65px; resize:vertical}
         </div>
         <div class="auto-row">
           <div>
-            <div class="auto-row-label">S/N CPU</div>
+            <div class="auto-row-label">S/N</div>
             <div class="auto-row-val mono" id="m-sn_cpu">-</div>
           </div>
         </div>
@@ -564,22 +560,6 @@ textarea.field-input{min-height:65px; resize:vertical}
         <label class="field-label">เบอร์โทร <span class="req">*</span></label>
         <input class="field-input" id="inp-phone" type="tel" placeholder="5xxxx">
       </div>
- 
-      <!-- อาการเสีย -->
-      <div class="field">
-        <label class="field-label">อาการเสีย</label>
-        <div class="chip-group" id="chip-group">
-          <button class="chip active" data-val="เปิดไม่ติด">เปิดไม่ติด</button>
-          <button class="chip" data-val="จอไม่แสดงผล">จอไม่แสดงผล</button>
-          <button class="chip" data-val="เครื่องช้า/ค้าง">เครื่องช้า/ค้าง</button>
-          <button class="chip" data-val="word/excel ใช้ไม่ได้">เword/excel ใช้ไม่ได้</button>
-          <button class="chip" data-val="คีย์บอร์ด/เมาส์">คีย์บอร์ด/เมาส์</button>
-          <button class="chip" data-val="เน็ตภายนอก">เน็ตภายนอก</button>
-          <button class="chip" data-val="เน็ตภายใน">เน็ตภายใน</button>
-          <button class="chip" data-val="อื่นๆ">อื่นๆ</button>
-        </div>
-      </div>
- 
       <!-- รายละเอียด -->
       <div class="field">
         <label class="field-label">รายละเอียดเพิ่มเติม</label>
@@ -631,21 +611,19 @@ function set(id, val) {
 
 /* ═══ แสดงข้อมูล ═══ */
 function render(data) {
-   /* ▼▼▼ เพิ่มบรรทัดนี้บนสุดของ render ▼▼▼ */
   currentAsset = data;
-  set('f-asset_id',    data.asset_id);      /* หมายเลขครุภัณฑ์ */
-  set('f-property_no', data.property_no);   /* หมายสินทรัพย์ */
-  set('f-brand',       data.brand);         /* ตราอักษร */
-  set('f-model',       data.model);         /* รุ่น */
-  set('f-sn_cpu',      data.sn_cpu);        /* S/N CPU */
-  set('f-sn_monitor',  data.sn_monitor);    /* S/N Monitor */
-  set('f-hdd',         data.hdd);           /* ROM */
-  set('f-ram',         data.ram);           /* RAM */
-  set('f-user_name',   data.user_name);     /* ผู้ใช้ */
-  set('f-location',    data.location);      /* สถานที่ */
-  set('f-repair_1',    data.repair_1);      /* ซ่อมครั้ง 1 */
-  set('f-repair_2',    data.repair_2);      /* ซ่อมครั้ง 2 */
-  set('f-repair_3',    data.repair_3);      /* ซ่อมครั้ง 3 */
+  set('f-asset_id',    data.asset_id);       /* หมายเลขครุภัณฑ์ (Col C) */
+  set('f-property_no', data.property_no);   /* หมายเลขสินทรัพย์ (Col D) */
+  set('f-brand',       data.brand);         /* ตราอักษร (Col E) */
+  set('f-model',       data.model);         /* รุ่น (Col F) */
+  set('f-sn',          data.sn);            /* S/N (Col G) */
+  set('f-receive_date',data.receive_date);  /* วันที่รับ (Col H) */
+  set('f-age',         data.age);           /* อายุการใช้งาน (Col I) */
+  set('f-location',    data.location);      /* สถานที่ติดตั้ง (Col K) */
+  set('f-user_name',   data.user_name);     /* ชื่อผู้ใช้ (Col L) */
+  set('f-repair_1',    data.repair_1);      /* ซ่อมครั้ง 1 (Col N) */
+  set('f-repair_2',    data.repair_2);      /* ซ่อมครั้ง 2 (Col O) */
+  set('f-repair_3',    data.repair_3);      /* ซ่อมครั้ง 3 (Col P) */
 
   /* ตั้งสถานะ + เปลี่ยนสีป้าย */
   var status = data.status || 'ใช้ราชการ';
@@ -708,9 +686,10 @@ function openRepairModal() {
   if (!currentAsset) return;
  
   /* ดึงข้อมูลเครื่องใส่ popup อัตโนมัติ */
+  /* ดึงข้อมูลเครื่องใส่ popup อัตโนมัติ */
   set('m-asset_id',    currentAsset.asset_id);
   set('m-brand_model', (currentAsset.brand || '-') + ' ' + (currentAsset.model || ''));
-  set('m-sn_cpu',      currentAsset.sn_cpu);
+  set('m-sn',          currentAsset.sn || currentAsset.sn_cpu); // ดึง S/N
   set('m-location',    currentAsset.location);
   set('m-user_name',   currentAsset.user_name);
  
@@ -752,15 +731,14 @@ async function submitRepair() {
     + '━━━━ ข้อมูลเครื่อง ━━━━\n'
     + '📋 หมายเลข: `' + (currentAsset.asset_id || '-') + '`\n'
     + '- ยี่ห้อ/รุ่น: ' + (currentAsset.brand || '-') + ' ' + (currentAsset.model || '') + '\n'
-    + '- S/N CPU: `' + (currentAsset.sn_cpu || '-') + '`\n'
+    + '- S/N : `' + (currentAsset.sn_cpu || '-') + '`\n'
     + '📍 สถานที่: ' + (currentAsset.location || '-') + '\n'
     + '👤 ผู้ใช้เครื่อง: ' + (currentAsset.user_name || '-') + '\n\n'
     + '━━━━ รายละเอียดแจ้งซ่อม ━━━━\n'
-    + '🙋 ผู้แจ้ง: ' + reporter + '\n'
+    + '- ผู้แจ้ง: ' + reporter + '\n'
     + '- เบอร์: ' + phone + '\n'
-    + '- อาการ: ' + selectedSymptom + '\n'
     + '- รายละเอียด: ' + (detail || '-') + '\n\n'
-    + '- วันที่: ' + new Date().toLocaleDateString('th-TH', {
+    + '- วันที่แจ้ง: ' + new Date().toLocaleDateString('th-TH', {
         year:'numeric', month:'long', day:'numeric',
         hour:'2-digit', minute:'2-digit'
       });
