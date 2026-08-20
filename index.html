@@ -596,12 +596,14 @@ function set(id, val) {
 
 /* ═══ แสดงข้อมูล ═══ */
 function render(data) {
+  console.log('ข้อมูลจาก JSON:', data); // ดูใน F12 > Console
+  currentAsset = data;
   currentAsset = data;
   set('f-asset_id',    data.asset_id);       /* หมายเลขครุภัณฑ์ (Col C) */
   set('f-property_no', data.property_no);   /* หมายเลขสินทรัพย์ (Col D) */
   set('f-brand',       data.brand);         /* ตราอักษร (Col E) */
   set('f-model',       data.model);         /* รุ่น (Col F) */
-  set('f-sn', data.sn || data.sn_cpu); /* ดึง S/N ไม่ว่าจะชื่อ sn หรือ sn_cpu */
+  set('f-sn', data.sn || data.sn_cpu || data.SN || data['S/N']);
   set('f-receive_date',data.receive_date);  /* วันที่รับ (Col H) */
   set('f-age',         data.age);           /* อายุการใช้งาน (Col I) */
   set('f-location',    data.location);      /* สถานที่ติดตั้ง (Col K) */
