@@ -264,6 +264,8 @@ body{
   width:100%; max-width:480px;
   max-height:90vh; overflow-y:auto;
   animation:modalSlide 0.3s ease;
+  display:flex;
+  flex-direction:column; /* บังคับเรียงแนวตั้ง Top -> Down */
 }
 @keyframes modalSlide{
   from{transform:translateY(100%)}
@@ -669,10 +671,13 @@ async function load() {
 function openRepairModal() {
   if (!currentAsset) return;
  
+  /* ดึงข้อมูล S/N ดักไว้ทุกชื่อ Key ที่มีโอกาสใช้ */
+  var snValue = currentAsset.sn || currentAsset.sn_cpu || currentAsset.sn_ups || currentAsset.SN || currentAsset['S/N'] || '-';
+
   /* ดึงข้อมูลเครื่องใส่ popup อัตโนมัติ */
   set('m-asset_id',    currentAsset.asset_id);
   set('m-brand_model', (currentAsset.brand || '-') + ' ' + (currentAsset.model || ''));
-  set('m-sn', currentAsset.sn || currentAsset.sn_cpu);
+  set('m-sn',          snValue);
   set('m-location',    currentAsset.location);
   set('m-user_name',   currentAsset.user_name);
  
