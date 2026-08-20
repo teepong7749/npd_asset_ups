@@ -487,7 +487,7 @@ textarea.field-input{min-height:65px; resize:vertical}
     <span class="btn-icon">🔧</span> แจ้งซ่อม
   </button>
 </div>
- <!-- ═══ Popup แจ้งซ่อม (ใหม่) ═══ -->
+<!-- ═══ Popup แจ้งซ่อม (แก้ไขโครงสร้างแท็กแล้ว) ═══ -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal" onclick="event.stopPropagation()">
  
@@ -495,9 +495,8 @@ textarea.field-input{min-height:65px; resize:vertical}
     <div class="modal-header">
       <span class="modal-header-icon">🔧</span>
       <div class="modal-header-text">
-        <div class="modal-header-text">
-  <h3 id="modal-title">แจ้งซ่อมครุภัณฑ์ สาย สสท.</h3>
-</div>
+        <h3 id="modal-title">แจ้งซ่อมเครื่องสำรองไฟ UPS</h3>
+      </div>
       <button class="modal-close" onclick="closeRepairModal()">✕</button>
     </div>
  
@@ -567,7 +566,7 @@ textarea.field-input{min-height:65px; resize:vertical}
     <!-- Footer -->
     <div class="modal-footer">
       <button class="btn-cancel" onclick="closeRepairModal()">ยกเลิก</button>
-      <button class="btn-submit" id="btn-submit" onclick="submitRepair()">📨 ยืนยันแจ้งซ่อม</button>
+      <button class="btn-submit" id="btn-submit" onclick="submitRepair()">ยืนยันแจ้งซ่อม</button>
     </div>
   </div>
 </div>
@@ -577,7 +576,7 @@ textarea.field-input{min-height:65px; resize:vertical}
   <span class="toast-icon">✅</span>
   <div>
     <div class="toast-title">แจ้งซ่อมสำเร็จ!</div>
-    <div class="toast-sub">ส่งแจ้งเตือนไปยัง Telegram แล้ว</div>
+    <div class="toast-sub">ส่งแจ้งเตือนไปยัง Line แล้ว</div>
   </div>
 </div>
 
