@@ -107,7 +107,7 @@ body{
 }
 
 /* ═══ แถวข้อมูล ═══ */
-.row{
+.{
   display:flex;
   align-items:center;
   padding:14px 20px;
@@ -420,14 +420,7 @@ textarea.field-input{min-height:65px; resize:vertical}
       <div class="row-label">S/N :</div>
       <div class="row-val mono" id="f-sn">-</div>
     </div>
-
-    <!-- อายุการใช้งาน / วันที่รับ (ตามตาราง Sheet) -->
-    <div class="row">
-      <div class="row-label">อายุการใช้งาน :</div>
-      <div class="row-val"><span id="f-age">-</span> ปี <span style="color:#6b7280;font-weight:400;font-size:13px">(วันที่รับ: <span id="f-receive_date">-</span>)</span></div>
-    </div>
-
-    <div class="row">
+   <div class="row">
       <div class="row-label">ผู้ใช้ :</div>
       <div class="row-val" id="f-user_name">-</div>
     </div>
@@ -604,8 +597,6 @@ function render(data) {
   set('f-brand',       data.brand);         /* ตราอักษร (Col E) */
   set('f-model',       data.model);         /* รุ่น (Col F) */
   set('f-sn', data.sn || data.sn_cpu || data.SN || data['S/N']);
-  set('f-receive_date',data.receive_date);  /* วันที่รับ (Col H) */
-  set('f-age',         data.age);           /* อายุการใช้งาน (Col I) */
   set('f-location',    data.location);      /* สถานที่ติดตั้ง (Col K) */
   set('f-user_name',   data.user_name);     /* ชื่อผู้ใช้ (Col L) */
   set('f-repair_1',    data.repair_1);      /* ซ่อมครั้ง 1 (Col N) */
