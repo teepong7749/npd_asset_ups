@@ -88,20 +88,26 @@ body{
   letter-spacing:0.12em;
 }
 
+
 /* ═══ Card (กล่องขาวแสดงข้อมูล) ═══ */
 .card{
   position:relative;
   z-index:2;
   background:#fff;
-  max-width:500px;           /* ล็อกความกว้างสูงสุดบนจอคอม */
-  width:calc(100% - 22px);   /* ยืดหยุ่นตามจอมือถือ */
-  margin:0 auto 12px;        /* จัดอยู่ตรงกลางจอเสมอ */
-  border-radius:8px;
+  margin:0 11px 12px;         /* ห่างจากขอบ ซ้าย-ขวา 14px */
+  border-radius:8px;          /* มุมโค้ง */
   overflow:hidden;
   box-shadow:0 12px 40px rgba(0,0,0,0.4);
   animation:slideUp 0.5s ease both;
 }
 
+...
+
+.repair-btn-wrap{
+  position:relative; z-index:2;
+  padding:0 11px 6px;
+  animation:slideUp 0.6s ease both;
+}
 ...
 
 .repair-btn-wrap{
