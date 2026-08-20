@@ -495,8 +495,9 @@ textarea.field-input{min-height:65px; resize:vertical}
     <div class="modal-header">
       <span class="modal-header-icon">🔧</span>
       <div class="modal-header-text">
-        <h3>แจ้งซ่อมครุภัณฑ์ สาย สสท.</h3>
-      </div>
+        <div class="modal-header-text">
+  <h3 id="modal-title">แจ้งซ่อมครุภัณฑ์ สาย สสท.</h3>
+</div>
       <button class="modal-close" onclick="closeRepairModal()">✕</button>
     </div>
  
@@ -523,7 +524,7 @@ textarea.field-input{min-height:65px; resize:vertical}
         </div>
         <div class="auto-row">
           <div>
-            <div class="auto-row-label">S/N</div>
+            <div class="auto-row-label" id="m-sn_label">S/N</div>
             <div class="auto-row-val mono" id="m-sn">-</div>
           </div>
         </div>
@@ -670,7 +671,6 @@ function openRepairModal() {
   if (!currentAsset) return;
  
   /* ดึงข้อมูลเครื่องใส่ popup อัตโนมัติ */
-  /* ดึงข้อมูลเครื่องใส่ popup อัตโนมัติ */
   set('m-asset_id',    currentAsset.asset_id);
   set('m-brand_model', (currentAsset.brand || '-') + ' ' + (currentAsset.model || ''));
   set('m-sn', currentAsset.sn || currentAsset.sn_cpu);
@@ -711,9 +711,9 @@ async function submitRepair() {
   btn.textContent = '⏳ กำลังส่ง...';
  
   /* สร้างข้อความ Telegram */
-  var msg = '🔧 *แจ้งซ่อมครุภัณฑ์*\n\n'
-    + '━━━━ ข้อมูลเครื่อง ━━━━\n'
-    + '📋 หมายเลข: `' + (currentAsset.asset_id || '-') + '`\n'
+  var msg = '🔧 *แจ้งซ่อมเครื่องสำรองไฟ UPS*\n\n'
+    +          '━━━━ ข้อมูลเครื่อง ━━━━\n'
+    + '- หมายเลข: `' + (currentAsset.asset_id || '-') + '`\n'
     + '- ยี่ห้อ/รุ่น: ' + (currentAsset.brand || '-') + ' ' + (currentAsset.model || '') + '\n'
     + '- S/N : `' + (currentAsset.sn || currentAsset.sn_cpu || '-') + '`\n'
     + '📍 สถานที่: ' + (currentAsset.location || '-') + '\n'
