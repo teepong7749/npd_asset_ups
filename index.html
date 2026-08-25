@@ -617,7 +617,7 @@ function render(data) {
   set('f-model',       data.model);         /* รุ่น (Col F) */
   set('f-sn', data.sn || data.sn_cpu || data.SN || data['S/N']);
   set('f-location',    data.location);      /* สถานที่ติดตั้ง (Col K) */
-  set('f-user_name',   userNameVal);     /* ชื่อผู้ใช้ (Col L) */
+  set('f-user_name',   data.user_name);     /* ชื่อผู้ใช้ (Col L) */
   set('f-repair_1',    data.repair_1);      /* ซ่อมครั้ง 1 (Col N) */
   set('f-repair_2',    data.repair_2);      /* ซ่อมครั้ง 2 (Col O) */
   set('f-repair_3',    data.repair_3);      /* ซ่อมครั้ง 3 (Col P) */
@@ -679,7 +679,7 @@ function openRepairModal() {
   set('m-brand_model', (currentAsset.brand || '-') + ' ' + (currentAsset.model || ''));
   set('m-sn',          snValue);
   set('m-location',    currentAsset.location);
-  set('m-user_name',   userNameValue);
+  set('m-user_name',   currentAsset.user_name || '-');
  
   /* เคลียร์ form */
   document.getElementById('inp-reporter').value = '';
