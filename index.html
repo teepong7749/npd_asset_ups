@@ -615,7 +615,7 @@ function render(data) {
   set('f-property_no', data.property_no);   /* หมายเลขสินทรัพย์ (Col D) */
   set('f-brand',       data.brand);         /* ตราอักษร (Col E) */
   set('f-model',       data.model);         /* รุ่น (Col F) */
-  set('f-sn', data.sn || data.sn_cpu || data.SN || data['S/N']);
+  set('f-sn', data['s/n'] || data['S/N']);
   set('f-location',    data.location);      /* สถานที่ติดตั้ง (Col K) */
   set('f-user_name',   data.user_name);     /* ชื่อผู้ใช้ (Col L) */
   set('f-repair_1',    data.repair_1);      /* ซ่อมครั้ง 1 (Col N) */
@@ -672,7 +672,7 @@ function openRepairModal() {
   if (!currentAsset) return;
  
   /* ดึงข้อมูล S/N ดักไว้ทุกชื่อ Key ที่มีโอกาสใช้ */
-  var snValue = currentAsset.sn || currentAsset.sn_cpu || currentAsset.sn_ups || currentAsset.SN || currentAsset['S/N'] || '-';
+var snValue = currentAsset['s/n'] || currentAsset['S/N'] || '-';
 
   /* ดึงข้อมูลเครื่องใส่ popup อัตโนมัติ */
   set('m-asset_id',    currentAsset.asset_id);
